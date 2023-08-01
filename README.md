@@ -6,8 +6,5 @@ Currently tool is checking for:
  - RDS
  - ELB
  - ELBv2
-
-
-Scans to add:
  - Redshift
  - Elasticache

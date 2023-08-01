@@ -24,6 +24,7 @@ github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.9.29 h1:IiDolu/eL
 github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.9.29/go.mod h1:fDbkK4o7fpPXWn8YAPmTieAMuB9mk/VgvW64uaUqxd4=
 github.com/aws/aws-sdk-go-v2/service/rds v1.48.0 h1:ogtlQ+ovTowyzlA5bFtm5A6utdRR80uMOMfUhp7c3Xs=
 github.com/aws/aws-sdk-go-v2/service/rds v1.48.0/go.mod h1:+T+8IxRb5KRF52F8xfWanPDfUCGFL3j1yRl/VVF0q+M=
+github.com/aws/aws-sdk-go-v2/service/redshift v1.28.1 h1:ZuQTY/P127S/Gyv5HZ6gGC0kqFLyTZMlyPduRvyPy/w=
 github.com/aws/aws-sdk-go-v2/service/redshift v1.28.1/go.mod h1:ihY8HhdhtqDaAvlUEd2iU3IfNboMiDVE6qicbacH0w4=
 github.com/aws/aws-sdk-go-v2/service/sso v1.12.13 h1:sWDv7cMITPcZ21QdreULwxOOAmE05JjEsT6fCDtDA9k=
 github.com/aws/aws-sdk-go-v2/service/sso v1.12.13/go.mod h1:DfX0sWuT46KpcqbMhJ9QWtxAIP1VozkDWf8VAkByjYY=

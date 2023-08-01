@@ -9,9 +9,11 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
+	"github.com/aws/aws-sdk-go-v2/service/elasticache"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing"
 	"github.com/aws/aws-sdk-go-v2/service/elasticloadbalancingv2"
 	"github.com/aws/aws-sdk-go-v2/service/rds"
+	"github.com/aws/aws-sdk-go-v2/service/redshift"
 )
 
 func main() {
@@ -72,12 +74,28 @@ func main() {
 	}
 
 	// Taking care of Elasticache
-	// elastiCacheClient := elasticache.NewFromConfig(cfg)
-	// elastiCacheInstances, err := elastiCacheClient
+	elastiCacheClient := elasticache.NewFromConfig(cfg)
+	elastiCacheInstances, err := elastiCacheClient.DescribeCacheClusters(context.TODO(), &elasticache.DescribeCacheClustersInput{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, cacheCluster := range elastiCacheInstances.CacheClusters {
+		for _, cacheSg := range cacheCluster.SecurityGroups {
+			used_sgs = append(used_sgs, *cacheSg.SecurityGroupId)
+		}
+	}
 
 	// Taking Care of RedShift
-	// redshiftClient := redshift.NewFromConfig(cfg)
-	// redshiftInstances, err := redshiftClient
+	redshiftClient := redshift.NewFromConfig(cfg)
+	redshiftClusters, err := redshiftClient.DescribeClusters(context.TODO(), &redshift.DescribeClustersInput{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, cacheCluster := range redshiftClusters.Clusters {
+		for _, cacheSg := range cacheCluster.VpcSecurityGroups {
+			used_sgs = append(used_sgs, *cacheSg.VpcSecurityGroupId)
+		}
+	}
 
 	for _, element := range all_sg.SecurityGroups {
 		if !slices.Contains(used_sgs, *element.GroupId) {
